@@ -140,9 +140,9 @@
     }
     
     .result-table {
-      width: 980px;
-      min-width: 980px;
-      max-width: 980px;
+      width: 1060px;
+      min-width: 1060px;
+      max-width: 1060px;
       table-layout: fixed;
       font-size: 0.72rem;
       line-height: 1.2;
@@ -156,26 +156,40 @@
       text-align: center;
       vertical-align: middle;
       white-space: nowrap;
-      padding: 0.36rem 0.35rem;
+      padding: 0.36rem 0.45rem;
     }
     
     /* Model column */
     .result-table th:first-child,
     .result-table td:first-child {
       text-align: left;
-      width: 160px;
+      width: 165px;
+      min-width: 165px;
     }
     
     /* Frames column */
     .result-table th:nth-child(2),
     .result-table td:nth-child(2) {
-      width: 90px;
+      width: 95px;
+      min-width: 95px;
     }
     
-    /* Metric columns */
-    .result-table th:nth-child(n+3),
-    .result-table td:nth-child(n+3) {
-      width: 72px;
+    /* NExTQA subcolumns */
+    .result-table th:nth-child(3),
+    .result-table td:nth-child(3),
+    .result-table th:nth-child(4),
+    .result-table td:nth-child(4),
+    .result-table th:nth-child(5),
+    .result-table td:nth-child(5) {
+      width: 84px;
+      min-width: 84px;
+    }
+    
+    /* Other metric columns */
+    .result-table th:nth-child(n+6),
+    .result-table td:nth-child(n+6) {
+      width: 76px;
+      min-width: 76px;
     }
     
     .result-table thead th {
@@ -214,7 +228,7 @@
     /* Qualitative example carousel */
     .example-carousel {
       position: relative;
-      max-width: 720px; 
+      max-width: 900px; 
       margin: 0 auto;
     }
     
@@ -237,14 +251,6 @@
       box-shadow: 0 8px 24px rgba(10, 10, 10, 0.08);
       padding: 0.75rem;
       background: white;
-    }
-    
-    .example-card img {
-      width: 100%;
-      max-height: 520px;
-      object-fit: contain;
-      display: block;
-      border-radius: 12px;
     }
     
     .example-controls {
