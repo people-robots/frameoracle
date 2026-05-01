@@ -176,9 +176,20 @@
       border-bottom: 2px solid #222 !important;
     }
     
-    /* NExTQA group header */
+    /* NExTQA group header: do not use full-cell border */
     .result-table thead tr:first-child th[colspan="3"] {
-      border-bottom: 2px solid #222 !important;
+      position: relative;
+      border-bottom: none !important;
+    }
+    
+    /* Short centered line under NExTQA */
+    .result-table thead tr:first-child th[colspan="3"]::after {
+      content: "";
+      position: absolute;
+      width: 72%;
+      left: 14%;
+      bottom: 0;
+      border-bottom: 2px solid #222;
     }
     
     /* Second-row NExTQA subheaders: OE_val / OE_test / MC */
