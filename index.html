@@ -15,6 +15,7 @@
   <style>
     body {
       font-family: 'Noto Sans', sans-serif;
+      overflow-x: hidden;
     }
 
     .publication-title {
@@ -119,19 +120,29 @@
       font-size: 0.95rem;
     }
 
-    /* Main result table */
-    .result-table-wrapper {
+    /* Main result table: compact horizontal scroll block */
+    .result-table-scroll {
+      width: 100%;
+      max-width: 100%;
       overflow-x: auto;
+      overflow-y: hidden;
       -webkit-overflow-scrolling: touch;
       border-radius: 14px;
       background: white;
+      box-shadow: 0 8px 24px rgba(10, 10, 10, 0.06);
+      padding: 0.25rem;
     }
 
     .result-table {
-      min-width: 1150px;
-      font-size: 0.88rem;
+      width: max-content;
+      min-width: 1050px;
+      max-width: none;
+      table-layout: auto;
+      font-size: 0.78rem;
+      line-height: 1.25;
       border-collapse: collapse;
       background: white;
+      margin-bottom: 0 !important;
     }
 
     .result-table th,
@@ -139,16 +150,24 @@
       text-align: center;
       vertical-align: middle;
       white-space: nowrap;
+      padding: 0.45rem 0.55rem;
     }
 
     .result-table th:first-child,
     .result-table td:first-child {
       text-align: left;
-      min-width: 210px;
+      min-width: 170px;
+      max-width: 190px;
+    }
+
+    .result-table th:nth-child(2),
+    .result-table td:nth-child(2) {
+      min-width: 90px;
     }
 
     .result-table thead th {
       border-bottom: 2px solid #222;
+      font-weight: 600;
     }
 
     .table-group-row td {
@@ -156,6 +175,7 @@
       text-align: center !important;
       font-weight: 500;
       color: #333;
+      padding: 0.45rem;
     }
 
     .highlight-row td {
@@ -173,6 +193,7 @@
     /* Qualitative example horizontal slider */
     .example-slider {
       width: 100%;
+      max-width: 100%;
       overflow-x: auto;
       overflow-y: hidden;
       padding-bottom: 1rem;
@@ -183,6 +204,7 @@
       display: flex;
       gap: 1.5rem;
       width: max-content;
+      max-width: none;
     }
 
     .example-card {
@@ -209,6 +231,16 @@
 
       .publication-subtitle {
         font-size: 1.45rem !important;
+      }
+
+      .result-table {
+        min-width: 980px;
+        font-size: 0.72rem;
+      }
+
+      .result-table th,
+      .result-table td {
+        padding: 0.38rem 0.45rem;
       }
 
       .example-card {
@@ -422,8 +454,8 @@
   </div>
 </section>
 
-<div class="table-container result-table-wrapper">
-  <table class="table is-fullwidth is-hoverable result-table">
+<div class="result-table-scroll">
+  <table class="table is-hoverable result-table">
     <thead>
       <tr>
         <th rowspan="2">Model</th>
