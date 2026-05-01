@@ -39,6 +39,41 @@
       display: flex; align-items: center; justify-content: center; text-align: center;
       color: #777; background: #fcfcfc; padding: 2rem; line-height: 1.6;
     }
+    .wide-figure-card {
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(10, 10, 10, 0.08);
+      background: white;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .section-text-block {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .example-slider {
+      overflow-x: auto;
+      padding: 0.5rem 0 1.25rem;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+    .example-track {
+      display: flex;
+      gap: 1.5rem;
+      min-width: max-content;
+    }
+    .example-card {
+      width: min(900px, 82vw);
+      flex: 0 0 auto;
+      scroll-snap-align: center;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(10, 10, 10, 0.08);
+      background: white;
+      padding: 1rem;
+    }
+    .example-slider::-webkit-scrollbar { height: 10px; }
+    .example-slider::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 999px; }
+    .example-slider::-webkit-scrollbar-thumb { background: #c8c8c8; border-radius: 999px; }
+
   </style>
 </head>
 <body>
@@ -108,7 +143,7 @@
 </section>
 
 <section class="section">
-  <div class="container is-max-desktop" style="max-width: 780px;">
+  <div class="container is-max-desktop" style="max-width: 580px;">
     <div class="teaser-box">
       <img src="figures/teaser.png" alt="FrameOracle teaser figure" class="paper-figure" />
       <p class="has-text-centered mt-4">
@@ -288,29 +323,6 @@
       </table>
     </div>
     <p class="has-text-centered mt-4" style="color:#666;">FrameOracle reduces the effective visual input while preserving or improving downstream accuracy.</p>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Benchmarks and Backbones</h2>
-    <div class="content has-text-centered">
-      <div>
-        <span class="mini-tag">NExTQA</span>
-        <span class="mini-tag">Perception</span>
-        <span class="mini-tag">LongVideoBench</span>
-        <span class="mini-tag">Video-MME</span>
-        <span class="mini-tag">EgoSchema</span>
-        <span class="mini-tag">MLVU</span>
-      </div>
-      <div class="mt-4">
-        <span class="mini-tag">Qwen2.5-VL-3B</span>
-        <span class="mini-tag">LLaVA-OneVision-7B</span>
-        <span class="mini-tag">LLaVA-Video-7B</span>
-        <span class="mini-tag">VideoLLaMA3-7B</span>
-        <span class="mini-tag">Qwen3-VL-8B</span>
-      </div>
-    </div>
   </div>
 </section>
 
