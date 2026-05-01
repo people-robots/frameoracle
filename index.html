@@ -167,58 +167,53 @@
 <section class="section">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">FrameOracle-41K Dataset</h2>
-    <div class="columns is-vcentered">
-      <div class="column is-7">
-        <div class="figure-card">
-          <div class="placeholder-figure">
-            <div>
-              <strong>Dataset pipeline figure placeholder</strong><br>
-              Suggested image: paper Figure 1, showing Stage I agent-based keyframe mining and Stage II filtering/verification.
-            </div>
-          </div>
-          <p class="figure-caption">
-            FrameOracle-41K is generated through agent-based keyframe mining followed by cross-model verification with three independent VLMs.
-          </p>
-        </div>
-      </div>
-      <div class="column is-5">
-        <div class="content">
-          <p><strong>40,992</strong> video-question pairs with keyframe annotations.</p>
-          <p><strong>Minimal sufficient frames:</strong> each example records the keyframes needed to answer the question, not just the final answer.</p>
-          <p><strong>Verification:</strong> candidate keyframes are retained only when three independent VLMs can answer correctly from the selected frames.</p>
-          <p><strong>Human check:</strong> 4,000 random examples are manually verified, with 94% inter-annotator agreement and 93.3% verified accuracy.</p>
-        </div>
-      </div>
+    <div class="wide-figure-card">
+      <img src="figures/data_generation.png" alt="FrameOracle data figure" class="paper-figure" />
+      <p class="figure-caption">
+        FrameOracle-41K is generated through agent-based keyframe mining followed by cross-model verification with three independent VLMs.
+      </p>
+    </div>
+
+    <div class="content section-text-block has-text-justified">
+      <p>
+        <strong>FrameOracle-41K</strong> contains <strong>40,992</strong> video-question pairs with keyframe annotations. Unlike standard VideoQA datasets that provide only final answers, FrameOracle-41K records the minimal sufficient frames needed to answer each question.
+      </p>
+      <p>
+        The dataset is built in two stages. First, an agent explores each video and mines candidate keyframes with relevance scores. Then, candidate keyframes are filtered and verified by three independent VLMs; an example is retained only when all three models answer correctly using the selected frames. A human check over 4,000 random examples reports 94% inter-annotator agreement and 93.3% verified accuracy.
+      </p>
     </div>
   </div>
 </section>
 
 <section class="section section-soft">
   <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Dataset Statistics</h2>
+    <div class="wide-figure-card">
+      <img src="figures/data_stat.png" alt="FrameOracle data stat figure" class="paper-figure" />
+      <p class="figure-caption">
+        FrameOracle-41K covers 16 question types and shows large variation in the number of frames required across question categories, motivating adaptive frame-count prediction.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Method Overview</h2>
-    <div class="columns is-vcentered">
-      <div class="column is-7">
-        <div class="figure-card">
-          <div class="placeholder-figure">
-            <div>
-              <strong>Method figure placeholder</strong><br>
-              Suggested image: paper Figure 3, showing visual encoder, text/visual projectors, Transformer encoder, Rank Head, and K Head.
-            </div>
-          </div>
-          <p class="figure-caption">
-            FrameOracle is a lightweight pre-processing module. It receives candidate frames and a textual question, then outputs a compact frame subset for the downstream VLM.
-          </p>
-        </div>
-      </div>
-      <div class="column is-5">
-        <div class="content">
-          <p><strong>Step 1.</strong> Uniformly sample a candidate frame set from the input video.</p>
-          <p><strong>Step 2.</strong> Encode frames and the query, then fuse them with a cross-modal Transformer encoder.</p>
-          <p><strong>Step 3.</strong> Use the Rank Head to score each frame’s relevance to the question.</p>
-          <p><strong>Step 4.</strong> Use the K Head to predict the number of frames needed.</p>
-          <p><strong>Step 5.</strong> Select the top-ranked frames according to the predicted K and pass them to any downstream VLM.</p>
-        </div>
-      </div>
+    <div class="wide-figure-card">
+      <img src="figures/method.png" alt="FrameOracle method figure" class="paper-figure" />
+      <p class="figure-caption">
+        FrameOracle is a lightweight pre-processing module. It receives candidate frames and a textual question, then outputs a compact frame subset for the downstream VLM.
+      </p>
+    </div>
+
+    <div class="content section-text-block has-text-justified">
+      <p>
+        FrameOracle first uniformly samples a candidate frame set from the input video. It then encodes the frames and query, projects them into a shared latent space, and uses a cross-modal Transformer encoder to model query-frame interactions.
+      </p>
+      <p>
+        The <strong>Rank Head</strong> scores each candidate frame by relevance, while the <strong>K Head</strong> predicts how many frames should be retained. The final selected subset contains the top-ranked frames according to the predicted K and can be passed to any downstream VLM without retraining the VLM backbone.
+      </p>
     </div>
   </div>
 </section>
@@ -293,6 +288,48 @@
       </table>
     </div>
     <p class="has-text-centered mt-4" style="color:#666;">FrameOracle reduces the effective visual input while preserving or improving downstream accuracy.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Benchmarks and Backbones</h2>
+    <div class="content has-text-centered">
+      <div>
+        <span class="mini-tag">NExTQA</span>
+        <span class="mini-tag">Perception</span>
+        <span class="mini-tag">LongVideoBench</span>
+        <span class="mini-tag">Video-MME</span>
+        <span class="mini-tag">EgoSchema</span>
+        <span class="mini-tag">MLVU</span>
+      </div>
+      <div class="mt-4">
+        <span class="mini-tag">Qwen2.5-VL-3B</span>
+        <span class="mini-tag">LLaVA-OneVision-7B</span>
+        <span class="mini-tag">LLaVA-Video-7B</span>
+        <span class="mini-tag">VideoLLaMA3-7B</span>
+        <span class="mini-tag">Qwen3-VL-8B</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Qualitative Examples</h2>
+    <p class="has-text-centered mb-5" style="color:#666;">
+      Scroll horizontally to view example cases where FrameOracle selects compact, question-relevant evidence frames.
+    </p>
+    <div class="example-slider">
+      <div class="example-track">
+        <div class="example-card">
+          <img src="figures/example1.png" alt="FrameOracle example figure 1" class="paper-figure" />
+        </div>
+        <div class="example-card">
+          <img src="figures/example2.png" alt="FrameOracle example figure 2" class="paper-figure" />
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
