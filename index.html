@@ -233,7 +233,14 @@
 
 
     .secondary-result-table-block {
-      margin-top: 2.5rem;
+      width: 100%;
+      max-width: 760px;
+      margin: 2.5rem auto 0 auto;
+    }
+    
+    .secondary-result-table-block .result-table-scroll {
+      max-width: 760px;
+      margin: 0 auto;
     }
     
     .keyframe-table {
@@ -245,6 +252,11 @@
     .keyframe-table thead th {
       border-bottom: 2px solid #222 !important;
       font-weight: 600;
+    }
+    
+    .keyframe-table th,
+    .keyframe-table td {
+      padding: 0.36rem 0.35rem;
     }
     
     .keyframe-table th:first-child,
