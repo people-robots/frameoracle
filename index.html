@@ -139,10 +139,11 @@
       padding: 0.25rem;
     }
     
+    /* Must match the total width of the colgroup */
     .result-table {
-      width: 1030px;
-      min-width: 1030px;
-      max-width: 1030px;
+      width: 1000px;
+      min-width: 1000px;
+      max-width: 1000px;
       table-layout: fixed;
       font-size: 0.72rem;
       line-height: 1.2;
@@ -156,12 +157,13 @@
       text-align: center;
       vertical-align: middle;
       white-space: nowrap;
-      padding: 0.36rem 0.35rem;
+      padding: 0.36rem 0.25rem;
     }
     
     .result-table th:first-child,
     .result-table td:first-child {
       text-align: left;
+      padding-left: 0.5rem;
     }
     
     .result-table thead th {
@@ -174,24 +176,14 @@
       border-bottom: 2px solid #222 !important;
     }
     
-    /* Second-row NExTQA subheaders: OE_val / OE_test / MC */
-    .result-table thead tr:nth-child(2) th {
+    /* NExTQA group header */
+    .result-table thead tr:first-child th[colspan="3"] {
       border-bottom: 2px solid #222 !important;
     }
     
-    /* NExTQA group header: draw a shorter centered line only under the text */
-    .result-table thead tr:first-child th[colspan="3"] {
-      position: relative;
-      border-bottom: none !important;
-    }
-    
-    .result-table thead tr:first-child th[colspan="3"]::after {
-      content: "";
-      position: absolute;
-      left: 12%;
-      right: 12%;
-      bottom: 0;
-      border-bottom: 2px solid #222;
+    /* Second-row NExTQA subheaders: OE_val / OE_test / MC */
+    .result-table thead tr:nth-child(2) th {
+      border-bottom: 2px solid #222 !important;
     }
     
     .table-group-row td {
@@ -531,15 +523,15 @@
       <div class="result-table-scroll">
   <table class="table is-hoverable result-table">
     <colgroup>
-      <col style="width:155px;">  <!-- Model -->
-      <col style="width:88px;">   <!-- Frames -->
-      <col style="width:78px;">   <!-- NExTQA OE_val -->
-      <col style="width:78px;">   <!-- NExTQA OE_test -->
-      <col style="width:78px;">   <!-- NExTQA MC -->
-      <col style="width:88px;">   <!-- Perception -->
-      <col style="width:68px;">   <!-- LVB -->
-      <col style="width:98px;">   <!-- Video-MME -->
-      <col style="width:98px;">   <!-- EgoSchema -->
+      <col style="width:160px;">  <!-- Model -->
+      <col style="width:90px;">   <!-- Frames -->
+      <col style="width:80px;">   <!-- OE_val -->
+      <col style="width:90px;">   <!-- OE_test -->
+      <col style="width:60px;">   <!-- MC -->
+      <col style="width:95px;">   <!-- Perception -->
+      <col style="width:65px;">   <!-- LVB -->
+      <col style="width:110px;">  <!-- Video-MME -->
+      <col style="width:110px;">  <!-- EgoSchema -->
       <col style="width:70px;">   <!-- MLVU -->
       <col style="width:70px;">   <!-- Avg. -->
     </colgroup>
