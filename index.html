@@ -123,10 +123,10 @@
     /* Main result table: centered compact scroll block */
     .result-table-block {
       width: 100%;
-      max-width: 980px;
+      max-width: 920px;
       margin: 0 auto;
     }
-
+    
     .result-table-scroll {
       width: 100%;
       max-width: 100%;
@@ -138,66 +138,73 @@
       box-shadow: 0 8px 24px rgba(10, 10, 10, 0.06);
       padding: 0.25rem;
     }
-
+    
     .result-table {
-      width: max-content;
-      min-width: 1120px;
-      max-width: none;
-      table-layout: auto;
-      font-size: 0.76rem;
-      line-height: 1.22;
+      width: 980px;
+      min-width: 980px;
+      max-width: 980px;
+      table-layout: fixed;
+      font-size: 0.72rem;
+      line-height: 1.2;
       border-collapse: collapse;
       background: white;
       margin-bottom: 0 !important;
     }
-
+    
     .result-table th,
     .result-table td {
       text-align: center;
       vertical-align: middle;
       white-space: nowrap;
-      padding: 0.42rem 0.5rem;
+      padding: 0.36rem 0.35rem;
     }
-
+    
+    /* Model column */
     .result-table th:first-child,
     .result-table td:first-child {
       text-align: left;
-      min-width: 170px;
-      max-width: 190px;
+      width: 160px;
     }
-
+    
+    /* Frames column */
     .result-table th:nth-child(2),
     .result-table td:nth-child(2) {
-      min-width: 90px;
+      width: 90px;
     }
-
+    
+    /* Metric columns */
+    .result-table th:nth-child(n+3),
+    .result-table td:nth-child(n+3) {
+      width: 72px;
+    }
+    
     .result-table thead th {
       border-bottom: 2px solid #222;
       font-weight: 600;
     }
-
+    
     .table-group-row td {
       background: #f0f0f0;
       text-align: center !important;
       font-weight: 500;
       color: #333;
-      padding: 0.42rem;
+      padding: 0.38rem;
     }
-
+    
     .highlight-row td {
       background: #eef5ff;
     }
-
+    
     .dashed-after td {
       border-bottom: 1.5px dashed #999;
     }
-
+    
     .result-table sup {
-      font-size: 0.7em;
+      font-size: 0.65em;
     }
-
+    
     .result-table-caption {
-      max-width: 920px;
+      max-width: 860px;
       margin-left: auto;
       margin-right: auto;
       margin-top: 1rem;
@@ -207,38 +214,39 @@
     /* Qualitative example carousel */
     .example-carousel {
       position: relative;
-      max-width: 980px;
+      max-width: 720px; 
       margin: 0 auto;
     }
-
+    
     .example-viewport {
       width: 100%;
       overflow: hidden;
       border-radius: 18px;
     }
-
+    
     .example-track {
       display: flex;
       transition: transform 0.35s ease;
       will-change: transform;
     }
-
+    
     .example-card {
       flex: 0 0 100%;
       box-sizing: border-box;
       border-radius: 16px;
       box-shadow: 0 8px 24px rgba(10, 10, 10, 0.08);
-      padding: 0.85rem;
+      padding: 0.75rem;
       background: white;
     }
-
+    
     .example-card img {
       width: 100%;
-      height: auto;
+      max-height: 520px;
+      object-fit: contain;
       display: block;
       border-radius: 12px;
     }
-
+    
     .example-controls {
       display: flex;
       align-items: center;
@@ -246,7 +254,7 @@
       gap: 0.75rem;
       margin-top: 1rem;
     }
-
+    
     .example-button {
       border: none;
       width: 2.4rem;
@@ -261,17 +269,17 @@
       box-shadow: 0 4px 14px rgba(10, 10, 10, 0.16);
       transition: opacity 0.2s ease, transform 0.2s ease;
     }
-
+    
     .example-button:hover {
       transform: translateY(-1px);
     }
-
+    
     .example-button:disabled {
       opacity: 0.35;
       cursor: not-allowed;
       transform: none;
     }
-
+    
     .example-indicator {
       min-width: 3.5rem;
       text-align: center;
