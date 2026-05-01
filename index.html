@@ -120,7 +120,13 @@
       font-size: 0.95rem;
     }
 
-    /* Main result table: compact horizontal scroll block */
+    /* Main result table: centered compact scroll block */
+    .result-table-block {
+      width: 100%;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
     .result-table-scroll {
       width: 100%;
       max-width: 100%;
@@ -135,11 +141,11 @@
 
     .result-table {
       width: max-content;
-      min-width: 1050px;
+      min-width: 1120px;
       max-width: none;
       table-layout: auto;
-      font-size: 0.78rem;
-      line-height: 1.25;
+      font-size: 0.76rem;
+      line-height: 1.22;
       border-collapse: collapse;
       background: white;
       margin-bottom: 0 !important;
@@ -150,7 +156,7 @@
       text-align: center;
       vertical-align: middle;
       white-space: nowrap;
-      padding: 0.45rem 0.55rem;
+      padding: 0.42rem 0.5rem;
     }
 
     .result-table th:first-child,
@@ -175,7 +181,7 @@
       text-align: center !important;
       font-weight: 500;
       color: #333;
-      padding: 0.45rem;
+      padding: 0.42rem;
     }
 
     .highlight-row td {
@@ -190,30 +196,39 @@
       font-size: 0.7em;
     }
 
-    /* Qualitative example horizontal slider */
-    .example-slider {
+    .result-table-caption {
+      max-width: 920px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+
+    /* Qualitative example carousel */
+    .example-carousel {
+      position: relative;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .example-viewport {
       width: 100%;
-      max-width: 100%;
-      overflow-x: auto;
-      overflow-y: hidden;
-      padding-bottom: 1rem;
-      -webkit-overflow-scrolling: touch;
+      overflow: hidden;
+      border-radius: 18px;
     }
 
     .example-track {
       display: flex;
-      gap: 1.5rem;
-      width: max-content;
-      max-width: none;
+      transition: transform 0.35s ease;
+      will-change: transform;
     }
 
     .example-card {
-      flex: 0 0 auto;
-      width: 620px;
-      max-width: 65vw;
+      flex: 0 0 100%;
+      box-sizing: border-box;
       border-radius: 16px;
       box-shadow: 0 8px 24px rgba(10, 10, 10, 0.08);
-      padding: 0.75rem;
+      padding: 0.85rem;
       background: white;
     }
 
@@ -221,7 +236,47 @@
       width: 100%;
       height: auto;
       display: block;
-      border-radius: 14px;
+      border-radius: 12px;
+    }
+
+    .example-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .example-button {
+      border: none;
+      width: 2.4rem;
+      height: 2.4rem;
+      border-radius: 999px;
+      background: #222;
+      color: white;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 14px rgba(10, 10, 10, 0.16);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .example-button:hover {
+      transform: translateY(-1px);
+    }
+
+    .example-button:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .example-indicator {
+      min-width: 3.5rem;
+      text-align: center;
+      color: #666;
+      font-size: 0.95rem;
     }
 
     @media screen and (max-width: 768px) {
@@ -243,8 +298,12 @@
         padding: 0.38rem 0.45rem;
       }
 
+      .example-carousel {
+        max-width: 100%;
+      }
+
       .example-card {
-        width: 82vw;
+        padding: 0.65rem;
       }
 
       .metric {
@@ -454,7 +513,11 @@
   </div>
 </section>
 
-<div class="result-table-scroll">
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Main Results</h2>
+    <div class="result-table-block">
+      <div class="result-table-scroll">
   <table class="table is-hoverable result-table">
     <thead>
       <tr>
@@ -743,10 +806,13 @@
   </table>
 </div>
 
-<p class="figure-caption">
+      <p class="figure-caption result-table-caption">
   FrameOracle vs. SOTA VLMs. “Frames” shows M→K̄: FrameOracle starts from M uniformly sampled frames and reduces to an average of K̄ frames.
   LVB = LongVideoBench validation set. § denotes non-significant changes under paired bootstrap testing.
 </p>
+    </div>
+  </div>
+</section>
 
 <section class="section section-soft">
   <div class="container is-max-desktop">
@@ -773,16 +839,29 @@
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Qualitative Examples</h2>
     <p class="has-text-centered mb-5" style="color:#666;">
-      Scroll horizontally to view example cases where FrameOracle selects compact, question-relevant evidence frames.
+      Use the arrow buttons to switch between example cases where FrameOracle selects compact, question-relevant evidence frames.
     </p>
-    <div class="example-slider">
-      <div class="example-track">
-        <div class="example-card">
-          <img src="figures/example1.png" alt="FrameOracle example figure 1" class="paper-figure" />
+
+    <div class="example-carousel" data-carousel>
+      <div class="example-viewport">
+        <div class="example-track">
+          <div class="example-card">
+            <img src="figures/example1.png" alt="FrameOracle example figure 1" class="paper-figure" />
+          </div>
+          <div class="example-card">
+            <img src="figures/example2.png" alt="FrameOracle example figure 2" class="paper-figure" />
+          </div>
         </div>
-        <div class="example-card">
-          <img src="figures/example2.png" alt="FrameOracle example figure 2" class="paper-figure" />
-        </div>
+      </div>
+
+      <div class="example-controls" aria-label="Qualitative example controls">
+        <button class="example-button" type="button" data-prev aria-label="Previous example">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <span class="example-indicator" data-indicator>1 / 2</span>
+        <button class="example-button" type="button" data-next aria-label="Next example">
+          <i class="fas fa-chevron-right"></i>
+        </button>
       </div>
     </div>
   </div>
@@ -809,6 +888,40 @@
     </div>
   </div>
 </footer>
+
+<script>
+  document.querySelectorAll('[data-carousel]').forEach((carousel) => {
+    const track = carousel.querySelector('.example-track');
+    const slides = Array.from(carousel.querySelectorAll('.example-card'));
+    const prev = carousel.querySelector('[data-prev]');
+    const next = carousel.querySelector('[data-next]');
+    const indicator = carousel.querySelector('[data-indicator]');
+    let index = 0;
+
+    function updateCarousel() {
+      track.style.transform = `translateX(-${index * 100}%)`;
+      indicator.textContent = `${index + 1} / ${slides.length}`;
+      prev.disabled = index === 0;
+      next.disabled = index === slides.length - 1;
+    }
+
+    prev.addEventListener('click', () => {
+      if (index > 0) {
+        index -= 1;
+        updateCarousel();
+      }
+    });
+
+    next.addEventListener('click', () => {
+      if (index < slides.length - 1) {
+        index += 1;
+        updateCarousel();
+      }
+    });
+
+    updateCarousel();
+  });
+</script>
 
 </body>
 </html>
