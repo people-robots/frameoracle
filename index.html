@@ -140,9 +140,9 @@
     }
     
     .result-table {
-      width: 850px;
-      min-width: 850px;
-      max-width: 850px;
+      width: 1030px;
+      min-width: 1030px;
+      max-width: 1030px;
       table-layout: fixed;
       font-size: 0.72rem;
       line-height: 1.2;
@@ -156,40 +156,12 @@
       text-align: center;
       vertical-align: middle;
       white-space: nowrap;
-      padding: 0.36rem 0.45rem;
+      padding: 0.36rem 0.35rem;
     }
     
-    /* Model column */
     .result-table th:first-child,
     .result-table td:first-child {
       text-align: left;
-      width: 105px;
-      min-width: 105px;
-    }
-    
-    /* Frames column */
-    .result-table th:nth-child(2),
-    .result-table td:nth-child(2) {
-      width: 65px;
-      min-width: 65px;
-    }
-    
-    /* NExTQA subcolumns */
-    .result-table th:nth-child(3),
-    .result-table td:nth-child(3),
-    .result-table th:nth-child(4),
-    .result-table td:nth-child(4),
-    .result-table th:nth-child(5),
-    .result-table td:nth-child(5) {
-      width: 120px;
-      min-width: 120px;
-    }
-    
-    /* Other metric columns */
-    .result-table th:nth-child(n+6),
-    .result-table td:nth-child(n+6) {
-      width: 54px;
-      min-width: 54px;
     }
     
     .result-table thead th {
@@ -533,6 +505,19 @@
     <div class="result-table-block">
       <div class="result-table-scroll">
   <table class="table is-hoverable result-table">
+    <colgroup>
+      <col style="width:155px;">  <!-- Model -->
+      <col style="width:88px;">   <!-- Frames -->
+      <col style="width:78px;">   <!-- NExTQA OE_val -->
+      <col style="width:78px;">   <!-- NExTQA OE_test -->
+      <col style="width:78px;">   <!-- NExTQA MC -->
+      <col style="width:88px;">   <!-- Perception -->
+      <col style="width:68px;">   <!-- LVB -->
+      <col style="width:98px;">   <!-- Video-MME -->
+      <col style="width:98px;">   <!-- EgoSchema -->
+      <col style="width:70px;">   <!-- MLVU -->
+      <col style="width:70px;">   <!-- Avg. -->
+    </colgroup>
     <thead>
       <tr>
         <th rowspan="2">Model</th>
